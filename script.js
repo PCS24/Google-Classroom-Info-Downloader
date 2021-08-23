@@ -36,9 +36,9 @@ console.log(teacherData);
 }
 if(prompt("is this class for the whole year? (yes or no)").toLowerCase()=='no'){
     finalData.marking_period = getNumber('What marking period is your class? (5 for 1st semester, 6 for second)',6,1);
-    finalData.is_quarterly_class = false;
-}else{
     finalData.is_quarterly_class = true;
+}else{
+    finalData.is_quarterly_class = false;
 }
 
 console.log(finalData);
