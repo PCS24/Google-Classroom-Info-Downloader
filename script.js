@@ -13,3 +13,47 @@ try{
 
 let teacherData = Array.from(document.getElementsByClassName('ycbm1d')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.firstChild.lastChild.innerText,student_id:a.lastChild.lastChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}}).map((a,index)=>{if(index == 0){a.owner = true}else{a.owner=false} return a});
 console.log(teacherData);
+ let userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim());
+
+ studentData.push({
+     name:userData[0],
+     student_id:userData[1]
+ });
+
+ const finalData = {
+    teachers:teacherData,
+    students:studentData,
+
+}
+
+ if(prompt('Is this class only for one period? (yes or no)').toLowerCase()=='no'){
+
+    finalData.startpd = getNumber('What period does your class start?',12,1)
+    finalData.endpd = getNumber('What period does your class end?',12,1)
+   
+}else{
+    finalData.class_period=getNumber('What period is your class',12,1);
+}
+if(prompt("is this class for the whole year? (yes or no)").toLowerCase()=='no'){
+    finalData.marking_period = getNumber('What marking period is your class? (5 for 1st semester, 6 for second)',6,1);
+    finalData.is_quarterly_class = false;
+}else{
+    finalData.is_quarterly_class = true;
+}
+
+console.log(finalData);
+
+
+function getNumber(question,upper,lower){
+
+    let rt = null;
+    do{
+    rt = prompt(question);
+    
+    rt = parseInt(rt);
+    if(rt>upper||rt<lower){
+        rt = NaN;
+    }
+    }while(isNaN(rt))
+    return rt;
+}
