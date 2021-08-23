@@ -1,5 +1,5 @@
 //this file contains the code which is fetched by the bookmark and is run
-
+alert("Make sure you hold shift and press refresh before running this bookmark. if you haven't do it now, else continue");
 
 let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}})
 console.log(studentData);
@@ -25,8 +25,9 @@ console.log(teacherData);
     students:studentData,
 
 }
-
- if(prompt('Is this class only for one period? (yes or no)').toLowerCase()=='no'){
+if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
+ finalData.is_hr_class = false;
+    if(prompt('Is this class only for one period? (yes or no)').toLowerCase()=='no'){
 
     finalData.startpd = getNumber('What period does your class start?',12,1)
     finalData.endpd = getNumber('What period does your class end?',12,1)
@@ -40,7 +41,9 @@ if(prompt("is this class for the whole year? (yes or no)").toLowerCase()=='no'){
 }else{
     finalData.is_quarterly_class = false;
 }
-
+}else{
+    finalData.is_hr_class = true;
+}
 console.log(finalData);
 
 
