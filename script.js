@@ -10,7 +10,7 @@ try{
     console.log(e);
 }
 
-let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}})
+let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}});
 console.log(teacherData);
  let userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim());
 
@@ -24,6 +24,11 @@ console.log(teacherData);
     students:studentData,
 
 }
+
+let modalHTML = fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/modal.html').then((res)=>res.text());
+document.createElement('div', {innerHTML: modalHTML});
+
+/*
 if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
  finalData.is_hr_class = false;
     if(prompt('Is this class only for one period? (yes or no)').toLowerCase()=='no'){
@@ -59,3 +64,4 @@ function getNumber(question,upper,lower){
     }while(isNaN(rt))
     return rt;
 }
+*/
