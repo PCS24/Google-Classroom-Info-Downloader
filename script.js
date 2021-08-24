@@ -1,5 +1,4 @@
 //this file contains the code which is fetched by the bookmark and is run
-alert("Make sure you hold shift and press refresh before running this bookmark. if you haven't do it now, else continue");
 
 let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}})
 console.log(studentData);
@@ -11,7 +10,7 @@ try{
     console.log(e);
 }
 
-let teacherData = Array.from(document.getElementsByClassName('ycbm1d')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.firstChild.lastChild.innerText,student_id:a.lastChild.lastChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}}).map((a,index)=>{if(index == 0){a.owner = true}else{a.owner=false} return a});
+let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}})
 console.log(teacherData);
  let userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim());
 
