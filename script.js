@@ -67,3 +67,6 @@ function getNumber(question,upper,lower){
     return rt;
 }
 */
+function onclic(){
+    console.log('it works')
+}
