@@ -32,7 +32,63 @@ async function main(){
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
+    if(is_hr_class){
+        let hrQuestion = document.getElementById('hr-question');
+        hrQuestion.hidden = false;
+        let form = hrQuestion.firstChild;
+        finalData.hr_num = await new Promise((resolve, reject) => {
+
+        form.onsubmit = (e)=>{
+            e.preventDefault();
+            
+            resolve(parseInt(document.getElementById('hrnum').value));
+            hrQuestion.hidden = true;
     
+        }
+    });
+        //add download
+        return;
+    }else{
+        let mpQuestion = document.getElementById('mp-question');
+        mpQuestion.hidden = false;
+        let form = mpQuestion.firstChild;
+        finalData.marking_period = await new Promise((resolve, reject) => {
+        
+            form.onsubmit = (e)=>{
+                e.preventDefault();
+                let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
+                let ans = options.find(a=> a.checked);
+                if (ans == undefined) {
+                    reject();
+                    return;    
+                }
+                resolve(ans.value);
+                mpQuestion.hidden = true;
+        
+            }    
+        })
+        let pdQuestion = document.getElementById('pd-question');
+        pdQuestion.hidden = false;
+        form = pdQuestion.firstChild;
+        finalData.class_period = await new Promise((resolve, reject) => {
+        
+            form.onsubmit = (e)=>{
+                e.preventDefault();
+                let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
+                let ans = options.find(a=> a.checked);
+                if (ans == undefined) {
+                    reject();
+                    return;    
+                }
+                resolve(ans.value);
+                pdQuestion.hidden = true;
+        
+            }    
+        })
+        //add download
+        return;
+    }
+
 }
 main().then(()=>console.log(finalData));
 /*
