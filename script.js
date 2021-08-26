@@ -29,6 +29,8 @@ document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
+    
+    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
         let value = parseInt(document.getElementById('hrnum').value);
@@ -60,7 +62,7 @@ async function main(){
 
         }
     }
-    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+    
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
     if(finalData.is_hr_class){
