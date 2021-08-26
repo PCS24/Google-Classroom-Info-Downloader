@@ -65,6 +65,7 @@ async function main(){
     
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
+    finalData.is_hr_class = finalData.is_hr_class=="yes"?true:false
     if(finalData.is_hr_class){
         let hrQuestion = document.getElementById('hr-question');
         hrQuestion.hidden = false;
