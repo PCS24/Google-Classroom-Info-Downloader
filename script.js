@@ -75,8 +75,9 @@ function getNumber(question,upper,lower){
 
 function newyesno(question){
    return new Promise((resolve, reject) => {
+    let div = document.getElementById('yes-no-question');
     let form = document.getElementById('form1')
-    form.hidden = false;
+    div.hidden = false;
     form.innerText = question;
     form.onsubmit = ()=>{
         let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
@@ -86,6 +87,7 @@ function newyesno(question){
             return;    
         }
         resolve(ans.value);
+        div.hidden = true;
 
     }    
 })
