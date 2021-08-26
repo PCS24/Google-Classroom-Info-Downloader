@@ -68,7 +68,7 @@ async function main(){
     if(finalData.is_hr_class){
         let hrQuestion = document.getElementById('hr-question');
         hrQuestion.hidden = false;
-        let form = hrQuestion.firstChild;
+        let form = document.getElementById('form4');
         finalData.hr_num = await new Promise((resolve, reject) => {
 
         form.onsubmit = (e)=>{
