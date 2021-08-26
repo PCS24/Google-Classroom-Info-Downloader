@@ -9,7 +9,10 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        p, h1, h2, h3, h4, h5, h6, div, input {
+        p, h1, h2, h3, h4, h5, h6, div {
+            color: white;
+        }
+        .submitbutton{
             color: white;
         }
 
@@ -23,7 +26,12 @@
         input[type=submit]:hover {
             background-color: navy;
         }
-
+        .error{
+            border:4px solid red;
+        }
+        .fillerclass{
+            background-color: white;
+        }
         .center {
             display: block;
             margin-left: auto;
@@ -31,19 +39,16 @@
             width: 50%;
         }
 
-        div.question {
-            /*display: none;*/ /* Questions should be hidden until asked */
-        }
         
     </style>
     <body>
         
         <img src="https://avatars.githubusercontent.com/u/85776833?s=2400&v=4" class="center" style="max-height: 200px; max-width: 200px;">
         <div class="center">
-            <div id="question1" class="question">
-                <b>Is this class a homeroom classroom?</b>
+            <div id="yes-no-question" class="question">
+                <form id="form1"> <!-- Add an onsubmit function later -->
+                <b>yes/no question</b>
                 <br>
-                <form  onsubmit="return false"> <!-- Add an onsubmit function later -->
                     <input type="radio" id="question1-yes" value="Yes" name="question1">
                     <label for="question1-yes">Yes</label>
                     <br>
@@ -51,7 +56,120 @@
                     <label for="question1-no">No</label>
                     <br>
                     <br>
-                    <input type="submit" value="Submit">
+                    <input type="submit" class="submitbutton" value="Submit">
+                </form>
+            </div>
+            <div id="pd-question" class="question" hidden>
+                <form id="form2"> <!-- Add an onsubmit function later -->
+                <b>pd question</b>
+                <br>
+                    <input type="radio"   value="1" name="question1">
+                    <label for="question1-yes">1</label>
+                    <br>
+                    <input type="radio"   value="2" name="question1">
+                    <label for="question1-yes">2</label>
+                    <br>
+                    <input type="radio"   value="3" name="question1">
+                    <label for="question1-yes">3</label>
+                    <br>
+                    <input type="radio"   value="4/5" name="question1">
+                    <label for="question1-yes">4-5</label>
+                    <br>
+                    <input type="radio"   value="5/6" name="question1">
+                    <label for="question1-yes">5-6</label>
+                    <br>
+                    <input type="radio"   value="6/7" name="question1">
+                    <label for="question1-yes">6-7</label>
+                    <br>
+                    <input type="radio"   value="7/8" name="question1">
+                    <label for="question1-yes">7-8</label>
+                    <br>
+                    <input type="radio"   value="8/9" name="question1">
+                    <label for="question1-yes">8-9</label>
+                    <br>
+                    <input type="radio"   value="9/10" name="question1">
+                    <label for="question1-yes">9-10</label>
+                    <br>
+                    <input type="radio"   value="11" name="question1">
+                    <label for="question1-yes">11</label>
+                    <br>
+                    <input type="radio"   value="12" name="question1">
+                    <label for="question1-yes">12</label>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" class="submitbutton">
+                </form>
+            </div>
+            <div id="mp-question" class="question" hidden>
+                <form id="form3"> <!-- Add an onsubmit function later -->
+                <b>mp question</b><br>
+                <b>if this is a gym class put fl</b>
+                <br>
+                    <input type="radio"   value="FY" name="question1">
+                    <label for="question1-yes">Full Year</label>
+                    <br>
+                    <input type="radio"   value="1" name="question1">
+                    <label for="question1-yes">MP 1</label>
+                    <br>
+                    <input type="radio"   value="2" name="question1">
+                    <label for="question1-yes">MP 2</label>
+                    <br>
+                    <input type="radio"   value="3" name="question1">
+                    <label for="question1-yes">MP 3</label>
+                    <br>
+                    <input type="radio"   value="4" name="question1">
+                    <label for="question1-yes">MP 4</label>
+                    <br>
+                    <input type="radio"   value="5" name="question1">
+                    <label for="question1-yes">Semester 1</label>
+                    <br>
+                    <input type="radio"   value="6" name="question1">
+                    <label for="question1-yes">Yes</label>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" class="submitbutton">
+                </form>
+            </div>
+            <div id="mp-question" class="question" hidden>
+                <form id="form4"> <!-- Add an onsubmit function later -->
+                <b>hr question</b><br>
+                <b>dont put your grade number like 9- or 10-, just put hr number like 24 or 3</b>
+                <br>
+                <label for="question1-yes">Enter hr:</label>
+                    <input type="text" class="fillerclass error" id="hrnum" onkeyup="(function(){
+                        let inp = document.getElementById('hrnum');
+                        let value = parseInt(document.getElementById('hrnum').value);
+                        if(isNaN(value)){
+                            bad();
+                            
+                        }else if(value>26){
+                            bad();
+                            
+                        }else if(value<1){
+                            bad();
+                        }else if(document.getElementById('hrnum').value.includes('-')){
+                            bad();
+                        }else{
+                            good();
+                        }
+                        function bad(){
+                            console.log(document.getElementById('hrnum').value);
+
+                           inp.className.includes('error')?true :inp.className+= ' error';
+                            document.getElementById('hrsub').hidden = true;
+                            
+                        }
+                        function good(){
+                            console.log(document.getElementById('hrnum').value);
+                           inp.className =  inp.className.replace(' error','');
+                           inp.className =  inp.className.replace(' error','');
+                            document.getElementById('hrsub').hidden = false;
+
+                        }
+                    })();" name="question1">
+                    <br>
+                    <br>
+                    <input type="submit" id="hrsub" value="Submit" class="submitbutton">
                 </form>
             </div>
         </div>

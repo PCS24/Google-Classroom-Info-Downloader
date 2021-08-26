@@ -28,8 +28,9 @@ console.log(teacherData);
 document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
-fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
-
+await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
+console.log(finalData);
 /*
 if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
  finalData.is_hr_class = false;
@@ -67,6 +68,28 @@ function getNumber(question,upper,lower){
     return rt;
 }
 */
+
+function newyesno(question){
+   return new Promise((resolve, reject) => {
+    let form = document.getElementById('form1')
+    form.hidden = false;
+    form.innerText = question;
+    form.onsubmit = ()=>{
+        let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
+        let ans = options.find(a=> a.checked);
+        if (ans == undefined) {
+            reject();
+            return;    
+        }
+        resolve(ans.value);
+
+    }    
+})
+
+}
+
+
+
 function onclic(){
     console.log('it works')
 }
