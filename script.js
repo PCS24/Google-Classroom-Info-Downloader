@@ -85,7 +85,7 @@ async function main(){
     }else{
         let mpQuestion = document.getElementById('mp-question');
         mpQuestion.hidden = false;
-        let form = mpQuestion.firstChild;
+        let form = document.getElementById('form3');
         finalData.marking_period = await new Promise((resolve, reject) => {
         
             form.onsubmit = (e)=>{
@@ -103,7 +103,7 @@ async function main(){
         })
         let pdQuestion = document.getElementById('pd-question');
         pdQuestion.hidden = false;
-        form = pdQuestion.firstChild;
+        form = document.getElementById('form2');
         finalData.class_period = await new Promise((resolve, reject) => {
         
             form.onsubmit = (e)=>{
