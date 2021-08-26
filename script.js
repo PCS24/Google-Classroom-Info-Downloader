@@ -119,6 +119,10 @@ async function main(){
         
             }    
         })
+        if(finalData.class_period.includes('/')){
+            finalData.start_period = finalData.class_period.split('/')[0]
+            finalData.end_period = finalData.class_period.split('/')[1]
+        }
         //add download
         return;
     }
