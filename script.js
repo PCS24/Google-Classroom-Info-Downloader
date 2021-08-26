@@ -32,7 +32,7 @@ async function main(){
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
-    if(is_hr_class){
+    if(finalData.is_hr_class){
         let hrQuestion = document.getElementById('hr-question');
         hrQuestion.hidden = false;
         let form = hrQuestion.firstChild;
@@ -134,7 +134,7 @@ function newyesno(question){
     let div = document.getElementById('yes-no-question');
     let form = document.getElementById('form1')
     div.hidden = false;
-    form.firstChild.innerText = question;
+    document.getElementById('yes-no-title').innerText = question;
     form.onsubmit = (e)=>{
         e.preventDefault();
         let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
