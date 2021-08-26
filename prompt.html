@@ -136,37 +136,7 @@
                 <b>dont put your grade number like 9- or 10-, just put hr number like 24 or 3</b>
                 <br>
                 <label for="question1-yes">Enter hr:</label>
-                    <input type="text" class="fillerclass error" id="hrnum" onkeyup="(function(){
-                        let inp = document.getElementById('hrnum');
-                        let value = parseInt(document.getElementById('hrnum').value);
-                        if(isNaN(value)){
-                            bad();
-                            
-                        }else if(value>26){
-                            bad();
-                            
-                        }else if(value<1){
-                            bad();
-                        }else if(document.getElementById('hrnum').value.includes('-')){
-                            bad();
-                        }else{
-                            good();
-                        }
-                        function bad(){
-                            console.log(document.getElementById('hrnum').value);
-
-                           inp.className.includes('error')?true :inp.className+= ' error';
-                            document.getElementById('hrsub').hidden = true;
-                            
-                        }
-                        function good(){
-                            console.log(document.getElementById('hrnum').value);
-                           inp.className =  inp.className.replace(' error','');
-                           inp.className =  inp.className.replace(' error','');
-                            document.getElementById('hrsub').hidden = false;
-
-                        }
-                    })();" name="question1">
+                    <input type="text" class="fillerclass error" id="hrnum" name="question1">
                     <br>
                     <br>
                     <input type="submit" id="hrsub" value="Submit" class="submitbutton">

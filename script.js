@@ -29,6 +29,37 @@ document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
+    document.getElementById('hrnum').onkeyup = function(){
+        let inp = document.getElementById('hrnum');
+        let value = parseInt(document.getElementById('hrnum').value);
+        if(isNaN(value)){
+            bad();
+            
+        }else if(value>26){
+            bad();
+            
+        }else if(value<1){
+            bad();
+        }else if(document.getElementById('hrnum').value.includes('-')){
+            bad();
+        }else{
+            good();
+        }
+        function bad(){
+            console.log(document.getElementById('hrnum').value);
+
+           inp.className.includes('error')?true :inp.className+= ' error';
+            document.getElementById('hrsub').hidden = true;
+            
+        }
+        function good(){
+            console.log(document.getElementById('hrnum').value);
+           inp.className =  inp.className.replace(' error','');
+           inp.className =  inp.className.replace(' error','');
+            document.getElementById('hrsub').hidden = false;
+
+        }
+    }
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
