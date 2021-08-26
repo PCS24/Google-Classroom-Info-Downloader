@@ -79,7 +79,8 @@ function newyesno(question){
     let form = document.getElementById('form1')
     div.hidden = false;
     form.firstChild.innerText = question;
-    form.onsubmit = ()=>{
+    form.onsubmit = (e)=>{
+        e.preventDefault();
         let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
         let ans = options.find(a=> a.checked);
         if (ans == undefined) {
