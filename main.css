@@ -34,4 +34,5 @@ input[type=submit]:hover {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    background-color: #1c4587c2;
 }
