@@ -134,7 +134,7 @@ async function main(){
         })
         
             finalData.start_period =parseInt(finalData.class_period.split('/')[0])
-            finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.length-1])
+            finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.split('/').length-1])
             delete finalData.class_period;
         
             
