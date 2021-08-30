@@ -133,9 +133,10 @@ async function main(){
 }
 main().then(()=>{
     const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
-    saveAs(blob,`classdata-${title}.json`).then(()=>setTimeout(function () {
+    saveAs(blob,`classdata-${title}.json`)
+    setTimeout(function () {
         window.location.reload()
-    }, 1000));
+    }, 1000);
 }).catch(console.error);
 /*
 if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
