@@ -25,7 +25,7 @@ console.log(teacherData);
     students:studentData,
 
 }
-
+let title = document.title;
 document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
@@ -132,7 +132,7 @@ async function main(){
 }
 main().then(()=>{
     const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
-    saveAs(blob,'classdata.json');
+    saveAs(blob,`classdata-${title}.json`);
 }).catch(console.error);
 /*
 if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
