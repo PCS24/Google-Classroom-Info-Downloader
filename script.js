@@ -1,4 +1,5 @@
 //this file contains the code which is fetched by the bookmark and is run
+import {saveAs} from 'https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js';
 
 let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}})
 console.log(studentData);
@@ -128,7 +129,10 @@ async function main(){
     }
 
 }
-main().then(()=>console.log(finalData));
+main().then(()=>{
+    const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
+    saveAs(blob,'classdata.json');
+});
 /*
 if(prompt("is this a Homeroom class? (yes or no)").toLowerCase() != 'yes'){
  finalData.is_hr_class = false;
