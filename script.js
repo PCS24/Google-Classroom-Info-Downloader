@@ -121,11 +121,12 @@ async function main(){
         
             }    
         })
-        if(finalData.class_period.includes('/')){
-            finalData.start_period = finalData.class_period.split('/')[0]
-            finalData.end_period = finalData.class_period.split('/')[1]
-        }
-        //add download
+        
+            finalData.start_period =parseInt(finalData.class_period.split('/')[0])
+            finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.length-1])
+            delete finalData.class_period;
+        
+            //add download
         return;
     }
 
