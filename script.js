@@ -32,7 +32,7 @@ document.head.parentElement.removeChild(document.head);
 async function main(){
   saveAsImport  = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
   
-    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/feat/scrape-names/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
         let value = parseInt(document.getElementById('hrnum').value);
