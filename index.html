@@ -10,5 +10,14 @@
 </head>
 <body>
     
+    <img src="https://avatars.githubusercontent.com/u/85776833?s=2400&v=4" class="center" style="max-height: 200px; max-width: 200px;">
+    <div class="center">
+        <a id="linkJs" href="/"><div id="button">Drag Me to your bookmark bar!</div></a>
+    </div>
+
+
+<script>
+    fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/bookmark.js').then((res)=>(res.text().then((a)=>(document.getElementById('linkJs').attributes['href'].value=a))));
+</script>
 </body>
 </html>
