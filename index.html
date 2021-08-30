@@ -16,8 +16,16 @@
     </div>
 
 
+
+
 <script>
     fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/bookmark.js').then((res)=>(res.text().then((a)=>(document.getElementById('linkJs').attributes['href'].value=a))));
+    document.getElementById('linkJs').onmouseenter =()=>{
+        document.getElementById('linkJs').innerText = 'Click me when on people tab of Google Classroom'
+    }
+    document.getElementById('linkJs').onmouseleave = ()=>{
+        document.getElementById('linkJs').innerText = 'Drag Me to your bookmark bar!'
+    }
 </script>
 </body>
 </html>
