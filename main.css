@@ -17,7 +17,8 @@ a{
 }
 
 .center:hover {
-    background-color: #1c438755;
+    background-color: #1c4587ff;
+    
 }
 
 .center {
@@ -28,4 +29,5 @@ a{
     background-color: #1c4587c2;
     min-height: 50px;
     text-align: center;
+    color: gold;
 }
