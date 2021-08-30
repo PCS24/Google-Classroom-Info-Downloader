@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: #1c4587ff;
+        }
+
+        p, h1, h2, h3, h4, h5, h6, span, a, div, input {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        p, h1, h2, h3, h4, h5, h6, div {
+            color: white;
+        }
+        .submitbutton{
+            color: white;
+        }
+
+        input[type=submit] {
+            background-color: transparent;
+            border: solid 1px white;
+            border-radius: 5px;
+            padding: 4px 4px 4px 4px;
+        }
+
+        input[type=submit]:hover {
+            background-color: navy;
+        }
+        .error{
+            border:4px solid red;
+        }
+        .fillerclass{
+            background-color: white;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        
+    </style>
+    <body>
+        
+        <img src="https://avatars.githubusercontent.com/u/85776833?s=2400&v=4" class="center" style="max-height: 200px; max-width: 200px;">
+        <div class="center">
+            <div id="yes-no-question" class="question" hidden>
+                <form id="form1"> <!-- Add an onsubmit function later -->
+                <b id="yes-no-title">yes/no question</b>
+                <br>
+                    <input type="radio" id="question1-yes" value="Yes" name="question1">
+                    <label for="question1-yes">Yes</label>
+                    <br>
+                    <input type="radio" id="question1-no" value="No" name="question1">
+                    <label for="question1-no">No</label>
+                    <br>
+                    <br>
+                    <input type="submit" class="submitbutton" value="Submit">
+                </form>
+            </div>
+            <div id="pd-question" class="question" hidden>
+                <form id="form2"> <!-- Add an onsubmit function later -->
+                <b>pd question</b>
+                <br>
+                    <input type="radio"   value="1" name="question1">
+                    <label for="question1-yes">1</label>
+                    <br>
+                    <input type="radio"   value="2" name="question1">
+                    <label for="question1-yes">2</label>
+                    <br>
+                    <input type="radio"   value="3" name="question1">
+                    <label for="question1-yes">3</label>
+                    <br>
+                    <input type="radio"   value="4/5" name="question1">
+                    <label for="question1-yes">4-5</label>
+                    <br>
+                    <input type="radio"   value="5/6" name="question1">
+                    <label for="question1-yes">5-6</label>
+                    <br>
+                    <input type="radio"   value="6/7" name="question1">
+                    <label for="question1-yes">6-7</label>
+                    <br>
+                    <input type="radio"   value="7/8" name="question1">
+                    <label for="question1-yes">7-8</label>
+                    <br>
+                    <input type="radio"   value="8/9" name="question1">
+                    <label for="question1-yes">8-9</label>
+                    <br>
+                    <input type="radio"   value="9/10" name="question1">
+                    <label for="question1-yes">9-10</label>
+                    <br>
+                    <input type="radio"   value="11" name="question1">
+                    <label for="question1-yes">11</label>
+                    <br>
+                    <input type="radio"   value="12" name="question1">
+                    <label for="question1-yes">12</label>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" class="submitbutton">
+                </form>
+            </div>
+            <div id="mp-question" class="question" hidden>
+                <form id="form3"> <!-- Add an onsubmit function later -->
+                <b>mp question</b><br>
+                <b>if this is a gym class put Full Year</b>
+                <br>
+                    <input type="radio"   value="0" name="question1">
+                    <label for="question1-yes">Full Year</label>
+                    <br>
+                    <input type="radio"   value="1" name="question1">
+                    <label for="question1-yes">MP 1</label>
+                    <br>
+                    <input type="radio"   value="2" name="question1">
+                    <label for="question1-yes">MP 2</label>
+                    <br>
+                    <input type="radio"   value="3" name="question1">
+                    <label for="question1-yes">MP 3</label>
+                    <br>
+                    <input type="radio"   value="4" name="question1">
+                    <label for="question1-yes">MP 4</label>
+                    <br>
+                    <input type="radio"   value="5" name="question1">
+                    <label for="question1-yes">Semester 1</label>
+                    <br>
+                    <input type="radio"   value="6" name="question1">
+                    <label for="question1-yes">Semester 2</label>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" class="submitbutton">
+                </form>
+            </div>
+            <div id="hr-question" class="question" hidden>
+                <form id="form4"> <!-- Add an onsubmit function later -->
+                <b>hr question</b><br>
+                <b>dont put your grade number like 9- or 10-, just put hr number like 24 or 3</b>
+                <br>
+                <label for="question1-yes">Enter hr:</label>
+                    <input type="text" class="fillerclass error" id="hrnum" name="question1">
+                    <br>
+                    <br>
+                    <input type="submit" id="hrsub" value="Submit" class="submitbutton">
+                </form>
+            </div>
+        </div>
+        
+    </body>
+</html>
