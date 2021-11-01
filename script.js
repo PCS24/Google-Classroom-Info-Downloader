@@ -37,7 +37,7 @@ document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
     //import the file saving library
-  saveAsImport  = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
+    saveAsImport = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
   
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     //input validation
@@ -121,16 +121,10 @@ async function main(){
         
             form.onsubmit = (e)=>{
                 e.preventDefault();
-                let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
-                let ans = options.find(a=> a.checked);
-                if (ans == undefined) {
-                    reject();
-                    return;    
-                }
-                resolve(ans.value);
-                pdQuestion.hidden = true;
-        
-            }    
+                let dropmenu = Array.from(form.children).filter(a=>a instanceof HTMLSelectElement)[0];
+                resolve(dropmenu.value);
+                mpQuestion.hidden = true;
+            }
         })
         
             finalData.start_period =parseInt(finalData.class_period.split('/')[0])
@@ -161,7 +155,7 @@ function newyesno(question){
     document.getElementById('yes-no-title').innerText = question;
     form.onsubmit = (e)=>{
         e.preventDefault();
-        let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
+        let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement);
         let ans = options.find(a=> a.checked);
         if (ans == undefined) {
             reject();
