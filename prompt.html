@@ -61,8 +61,10 @@
             </div>
             <div id="pd-question" class="question" hidden>
                 <form id="form2"> <!-- Add an onsubmit function later -->
-                <b>pd question</b>
+                <b>Class Period</b><br>
+                <i>Please the period this class takes place in.</i>
                 <br>
+                    <!--
                     <input type="radio"   value="1" name="question1">
                     <label for="question1-yes">1</label>
                     <br>
@@ -97,13 +99,28 @@
                     <label for="question1-yes">12</label>
                     <br>
                     <br>
+                    -->
+                    <label for="pd-input">Period: </label>
+                    <select id="pd-input" name="pd-input">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4/5">4/5</option>
+                        <option value="5/6">5/6</option>
+                        <option value="6/7">6/7</option>
+                        <option value="7/8">7/8</option>
+                        <option value="8/9">8/9</option>
+                        <option value="9/10">9/10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
                     <input type="submit" value="Submit" class="submitbutton">
                 </form>
             </div>
             <div id="mp-question" class="question" hidden>
                 <form id="form3"> <!-- Add an onsubmit function later -->
-                <b>mp question</b><br>
-                <b>if this is a gym class put Full Year</b>
+                <b>Marking Period</b><br>
+                <i>If this is a gym class, select full year, not your actual gym marking periods</i>
                 <br>
                     <input type="radio"   value="0" name="question1">
                     <label for="question1-yes">Full Year</label>
@@ -132,8 +149,8 @@
             </div>
             <div id="hr-question" class="question" hidden>
                 <form id="form4"> <!-- Add an onsubmit function later -->
-                <b>hr question</b><br>
-                <b>dont put your grade number like 9- or 10-, just put hr number like 24 or 3</b>
+                <b>Homeroom Number</b><br>
+                <i>Do not include your grade number in your response (example: If your homeroom is 10-14, you should just enter 14).</i>
                 <br>
                 <label for="question1-yes">Enter hr:</label>
                     <input type="text" class="fillerclass error" id="hrnum" name="question1">
