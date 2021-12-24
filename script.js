@@ -108,7 +108,7 @@ async function main(){
                     reject();
                     return;    
                 }
-                resolve(ans.value);
+                resolve(parseInt(ans.value));
                 mpQuestion.hidden = true;
         
             }    
