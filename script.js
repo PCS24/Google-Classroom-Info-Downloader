@@ -2,7 +2,7 @@
 let saveAsImport;
 
 //get student data
-let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim()}})
+let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
 console.log(studentData);
 
 //try to click view more
@@ -21,7 +21,7 @@ console.log(teacherData);
 
  studentData.push({
      name:userData[0],
-     student_id:userData[1]
+     student_id:parseInt(userData[1])
  });
 
  const finalData = {
