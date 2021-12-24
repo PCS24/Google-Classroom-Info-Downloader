@@ -9,6 +9,7 @@ console.log(studentData);
 try{
     Array.from(document.getElementsByClassName('NPEfkd RveJvd snByac')).filter((element) => element.innerText == "View all")[0].click();
 }catch(e){
+    console.log("Unable to locate or click a \"View more\" button");
     console.log(e);
 }
 
@@ -127,7 +128,7 @@ async function main(){
             }
         })
         
-            finalData.start_period =parseInt(finalData.class_period.split('/')[0])
+            finalData.start_period = parseInt(finalData.class_period.split('/')[0])
             finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.split('/').length-1])
             delete finalData.class_period;
         
