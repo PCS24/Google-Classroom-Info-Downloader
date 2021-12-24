@@ -43,31 +43,31 @@ async function main(){
     //input validation
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
-        let value = parseInt(document.getElementById('hrnum').value);
-        if(isNaN(value)){
+        let value = document.getElementById('hrnum').value;
+        if (isNaN(value)) {
             bad();
             
-        }else if(value>26){
+        } else if (value>26) {
             bad();
             
-        }else if(value<1){
+        } else if (value<1) {
             bad();
-        }else if(document.getElementById('hrnum').value.includes('-')){
+        } else if (document.getElementById('hrnum').value.includes('-')) {
             bad();
-        }else{
+        } else {
             good();
         }
         function bad(){
-            console.log(document.getElementById('hrnum').value);
+            //console.log(document.getElementById('hrnum').value);
 
-           inp.className.includes('error')?undefined:inp.className+= ' error';
+            inp.className.includes('error')?undefined:inp.className+= ' error';
             document.getElementById('hrsub').hidden = true;
             
         }
         function good(){
-            console.log(document.getElementById('hrnum').value);
-           inp.className =  inp.className.replace(' error','');
-           inp.className =  inp.className.replace(' error','');
+            //console.log(document.getElementById('hrnum').value);
+            inp.className =  inp.className.replace(' error','');
+            inp.className =  inp.className.replace(' error','');
             document.getElementById('hrsub').hidden = false;
 
         }
