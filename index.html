@@ -6,18 +6,16 @@
     <title>PCS Google Classroom Scraper</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='icon' type='image/png' href="https://avatars.githubusercontent.com/u/85776833?s=2400&v=4">
     <!--<script src='main.js'></script>-->
 </head>
 <body>
     
     <img src="https://avatars.githubusercontent.com/u/85776833?s=2400&v=4" class="center" style="max-height: 200px; max-width: 200px;">
     <div class="center">
-        <a id="linkJs" href="javascript:(function() {fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/script.js').then((res)=>res.text()).then(text=>console.log(eval(text)));}());">Drag Me to your bookmark bar!</a>
-    </div>
-    <div class="center">
         <br>
         <br>
-        1. Drag this into your bookmarks bar
+        1. Drag <a id="linkJs" href="javascript:(function() {fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/script.js').then((res)=>res.text()).then(text=>console.log(eval(text)));}());">this link</a> into your bookmarks bar
         <br>
         <br>
         2. Open one of your classes on Google Classroom
@@ -32,17 +30,18 @@
         <br>
         <br>
         
-        5. Answer the questions that appear
+        5. Answer the questions that appear and save the file that downloads
         <br>
         <br>
         
-        6. Upload your file on Discord and ping an operator!
+        6. Upload your file in the PCS Discord server and ping someone with the <span id="operator-role">@Schedule System Assistant</span> role
         <br>
         <br>
         
-        7. Repeat steps 2-6 for each of your classes
+        7. Repeat steps 2-6 for any other classes besides gym classes
         <br>
         <br>
+        Thanks a lot!
     </div>
 
 
@@ -50,12 +49,6 @@
 
 <script>
     fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/bookmark.js').then((res)=>(res.text().then((a)=>(document.getElementById('linkJs').attributes['href'].value=a))));
-    document.getElementById('linkJs').onmouseenter =()=>{
-        document.getElementById('linkJs').innerText = 'Click me when on people tab of Google Classroom'
-    }
-    document.getElementById('linkJs').onmouseleave = ()=>{
-        document.getElementById('linkJs').innerText = 'Drag Me to your bookmark bar!'
-    }
 </script>
 </body>
 </html> 
