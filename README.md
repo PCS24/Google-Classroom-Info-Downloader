@@ -4,21 +4,29 @@ A bookmark script that can download a list of students and teachers from a Googl
 ## Setup
 1. Open [this link](https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/bookmark.js) in a new tab.
 2. Copy all the text to your clipboard.
-3. Follow the instructions for your browser below.
-    * _Chrome_: 
-        * Make sure your bookmarks bar is showing. If it isn't, make sure the setting shown below is enabled. 
-            * <img src="https://i.imgur.com/QmpStaG.png" width=300px>
-        * Right-click your bookmarks bar and click "Add page". 
-            * <img src="https://i.imgur.com/ozyiSdp.png" height=200px>
-        * In the menu that appears, click the URL box. Delete any existing URL and paste the code you copied in step 1. Then click "Save".
-            * <img src="https://i.imgur.com/ifrgvDQ.png">
-    * _Firefox_: 
-        * Make sure your bookmarks bar is showing. If it isn't, refer to the guide [here](https://support.mozilla.org/en-US/kb/bookmarks-toolbar-display-favorite-websites).
-        * Right-click your bookmarks bar and click "Add Bookmark".
-            * <img src="https://i.imgur.com/k1RxoYS.png">
-        * In the menu that appears, click the URL box. Delete any existing URL and paste the code you copied in step 1. Then click "Save".
-            * <img src="https://i.imgur.com/LxOQjiD.png"> 
-    * _Other_: Create a new bookmark in your bookmarks bar. Find out how to edit the URL. Replace the URL with the code you copied in step 1 and save the bookmark.
+3. Follow the instructions for your browser below (click to expand).
+<details>
+<summary><strong>Chrome</strong></summary>
+<ol>
+  <li>Make sure your bookmarks bar is showing. If it isn't, make sure the setting shown below is enabled.</li>
+  <ul><li><img src="https://i.imgur.com/QmpStaG.png" width=300px></li></ul>
+  <li>Right-click your bookmarks bar and click "Add page".</li>
+  <ul><li><img src="https://i.imgur.com/ozyiSdp.png" height=200px></li></ul>
+  <li>In the menu that appears, click the URL box. Delete any existing URL and paste the code you copied in step 1. Then click "Save".</li>
+  <ul><li><img src="https://i.imgur.com/ifrgvDQ.png"></li></ul>
+</ol>
+</details>
+<details>
+<summary><strong>Firefox</strong></summary>
+<ol>
+  <li>Make sure your bookmarks bar is showing. If it isn't, refer to the guide <a href=https://support.mozilla.org/en-US/kb/bookmarks-toolbar-display-favorite-websites>here</a>.</li>
+  <li>Right-click your bookmarks bar and click "Add Bookmark".</li>
+  <ul><li><img src="https://i.imgur.com/k1RxoYS.png"></li></ul>
+  <li>In the menu that appears, click the URL box. Delete any existing URL and paste the code you copied in step 1. Then click "Save".</li>
+  <ul><li><img src="https://i.imgur.com/LxOQjiD.png"></li></ul>
+</ol>
+</details>
+<details><summary><strong>Other</strong></summary>Create a new bookmark in your bookmarks bar. Find out how to edit the URL. Replace the URL with the code you copied in step 1 and save the bookmark.</details>
 
 **NOTE:** You must be on a __desktop browser__ to use the script. It will not work on a mobile device. Chrome or Firefox are recommended, but other popular browsers may work.
 
