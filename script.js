@@ -14,7 +14,7 @@ try{
 }
 
 /* get teacher data */
-var teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.visibility=='visible').map((a, index)=>{return{name: a.innerText, owner: index==0}});
+var teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.visibility!=='hidden').map((a, index)=>{return{name: a.innerText, owner: index==0}});
 console.log(teacherData);
 
 /* get data about the person that is scraping */
