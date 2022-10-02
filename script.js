@@ -40,7 +40,7 @@ async function main(){
     /* import the file saving library */
     saveAsImport = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
   
-    await fetch(/*'https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html'*/'http://localhost:8000/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     /* input validation */
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
