@@ -38,8 +38,13 @@ document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
-  
+    
+    /*
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+    */
+
+    setupPrompts();
+
     /* input validation */
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
@@ -185,3 +190,277 @@ function newyesno(question){
 
 }
 
+function setupPrompts() {
+
+    const CSS_URL = "https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.css";
+    let tmp;
+
+    /* Clear existing content */
+    document.body.remove();
+    document.body = document.createElement('body');
+    const body = document.body;
+
+    /* CSS */
+    tmp = document.createElement('link');
+    tmp.setAttribute('rel', 'stylesheet');
+    tmp.setAttribute('type', 'text/css');
+    tmp.setAttribute('href', CSS_URL);
+    body.appendChild(tmp);
+
+    /* Logo image */
+    tmp = document.createElement('img');
+    tmp.setAttribute('src', 'https://avatars.githubusercontent.com/u/85776833?s=2400&v=4');
+    tmp.setAttribute('class', 'center');
+    tmp.style.maxHeight = '200px';
+    tmp.style.maxWidth = '200px';
+    body.appendChild(tmp);
+
+    /* Main div */
+    const mainDiv = document.createElement('div');
+    mainDiv.setAttribute('class', 'center');
+    body.appendChild(mainDiv);
+    
+    /* yes/no question div */
+    const yesNoDiv = document.createElement('div');
+    yesNoDiv.setAttribute('id', 'yes-no-question');
+    yesNoDiv.setAttribute('class', 'question');
+    yesNoDiv.setAttribute('hidden', 'true');
+    mainDiv.appendChild(yesNoDiv);
+
+        /* Form tag */
+        const form1 = document.createElement('form');
+        form1.setAttribute('id', 'form1');
+        yesNoDiv.appendChild(form1);
+
+        /* b element */
+        tmp = document.createElement('b');
+        tmp.setAttribute('id', 'yes-no-title');
+        tmp.innerText = 'yes/no question';
+        form1.appendChild(tmp);
+
+        /* br */
+        form1.appendChild(document.createElement('br'));
+
+        /* input 1 */
+        tmp = document.createElement('input');
+        tmp.setAttribute('type', 'radio');
+        tmp.setAttribute('id', 'question1-yes');
+        tmp.setAttribute('value', 'Yes');
+        tmp.setAttribute('name', 'question1');
+        form1.appendChild(tmp);
+
+        /* input 1 label */
+        tmp = document.createElement('label');
+        tmp.setAttribute('for', 'question1-yes');
+        tmp.innerText = 'Yes';
+        form1.appendChild(tmp);
+
+        /* br */
+        form1.appendChild(document.createElement('br'));
+
+        /* input 2 */
+        tmp = document.createElement('input');
+        tmp.setAttribute('type', 'radio');
+        tmp.setAttribute('id', 'question1-no');
+        tmp.setAttribute('value', 'No');
+        tmp.setAttribute('name', 'question1');
+        form1.appendChild(tmp);
+
+        /* input 2 label */
+        tmp = document.createElement('label');
+        tmp.setAttribute('for', 'question1-no');
+        tmp.innerText = 'No';
+        form1.appendChild(tmp);
+
+        /* br x2 */
+        form1.appendChild(document.createElement('br'));
+        form1.appendChild(document.createElement('br'));
+
+        /* input submit */
+        tmp = document.createElement('input');
+        tmp.setAttribute('type', 'submit');
+        tmp.setAttribute('class', 'submitbutton');
+        tmp.setAttribute('value', 'Submit');
+        form1.appendChild(tmp);
+        
+    /* Period question div */
+    const pdQuestionDiv = document.createElement('div');
+    pdQuestionDiv.setAttribute('id', 'pd-question');
+    pdQuestionDiv.setAttribute('class', 'question');
+    pdQuestionDiv.setAttribute('hidden', 'true');
+    mainDiv.appendChild(pdQuestionDiv);
+    
+        /* Form tag */
+        const form2 = document.createElement('form');
+        form2.setAttribute('id', 'form2');
+        pdQuestionDiv.appendChild(form2);
+
+        /* b tag */
+        tmp = document.createElement('b');
+        tmp.innerText = 'Class Period';
+        form2.appendChild(tmp);
+
+        /* br */
+        br(form2);
+
+        /* i tag */
+        tmp = createChild(form2, 'i');
+        tmp.innerText = 'Please select the period this class takes place in.';
+
+        /* br x2 */
+        br(form2);
+        br(form2);
+
+        /* select label */
+        createChild(form2, 'label', {
+            for: 'pd-input'
+        });
+
+        /* select */
+        let pdQuestionSelect = createChild(form2, 'select', {
+            id: 'pd-input',
+            name: 'pd-input'
+        });
+
+        /* select options */
+        const PERIOD_OPTIONS = ['1', '2', '3', '4/5', '5/6', '6/7', '7/8', '8/9', '9/10', '11', '12'];
+        for (const c of PERIOD_OPTIONS) {
+            let opt = createChild(pdQuestionSelect, 'option', {
+                value: c
+            });
+            opt.innerText = c;
+        }
+
+        /* input submit */
+        createChild(form2, 'input', {
+            type: 'submit',
+            value: 'Submit',
+            class: 'submitbutton'
+        });
+
+    /* mp question div */
+    const mpQuestionDiv = createChild(mainDiv, 'div', {
+        id: 'mp-question',
+        class: 'question',
+        hidden: 'true'
+    });
+
+        /* form tag */
+        const form3 = createChild(mpQuestionDiv, 'form', {id: 'form3'});
+
+        /* b tag */
+        tmp = createChild(form3, 'b');
+        tmp.innerText = 'Marking Period';
+
+        /* br */
+        br(form3);
+
+        /* i tag */
+        tmp = createChild(form3, 'i');
+        tmp.innerText = "If this is a gym class, select full year, not your actual gym marking periods";
+
+        /* br */
+        br(form3);
+
+        /* response options */
+        const RESPONSES = [
+            'Full Year',
+            'MP 1',
+            'MP 2',
+            'MP 3',
+            'MP 4',
+            'Semester 1',
+            'Semester 2'
+        ];
+        for (const c of RESPONSES) {
+            createChild(form3, 'input', {
+                type: 'radio',
+                value: RESPONSES.indexOf(c).toString(),
+                name: 'question1',
+            });
+            let label = createChild(form3, 'label', {
+                for: 'question1-yes'
+            });
+            label.innerText = c;
+            br(form3);
+        }
+
+        /* br */
+        br(form3);
+
+        /* input submit */
+        createChild(form3, 'input', {
+            type: 'submit',
+            value: 'Submit',
+            class: 'submitbutton'
+        });
+
+    /* hr question div */
+    const hrQuestionDiv = createChild(mainDiv, 'div', {
+        id: 'hr-question',
+        class: 'question',
+        hidden: 'true'
+    });
+
+        /* form tag */
+        const form4 = createChild(hrQuestionDiv, 'form', {id: 'form4'});
+
+        /* b tag */
+        tmp = createChild(form4, 'b');
+        tmp.innerText = 'Homeroom Number';
+
+        /* br */
+        br(form4);
+
+        /* i tag */
+        tmp = createChild(form4, 'i');
+        tmp.innerText = "Do not include your grade number in your response (example: If your homeroom is 10-14, you should just enter 14).";
+
+        /* br */
+        br(form4);
+
+        /* input label */
+        tmp = createChild(form4, 'label', {
+            for: 'question1-yes'
+        });
+        tmp.innerText = 'Enter hr:';
+
+        /* hr input */
+        createChild(form4, 'input', {
+            type: 'text',
+            class: 'fillerclass error',
+            id: 'hrnum',
+            name: 'question1'
+        });
+
+        /* br x2 */
+        br(form4);
+        br(form4);
+
+        /* input submit */
+        createChild(form4, 'input', {
+            type: 'submit',
+            value: 'Submit',
+            class: 'submitbutton',
+            id: 'hrsub'
+        });
+}
+
+function br(elt) {
+    elt.appendChild(document.createElement('br'));
+}
+
+function createChild(root, tag, options) {
+    let elt = document.createElement(tag);
+    if (!!options) {
+        for (const k of Object.keys(options)) {
+            if (k === 'class') {
+                elt.className = options[k];
+                continue;
+            }
+            elt[k] = options[k];
+        }
+    }
+    root.appendChild(elt);
+    return elt;
+}
