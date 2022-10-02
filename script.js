@@ -2,7 +2,7 @@
 let saveAsImport;
 
 /* get student data */
-let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.lastChild.innerText.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
+var studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.lastChild.innerText.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
 console.log(studentData);
 
 /* try to click view more */
@@ -18,12 +18,13 @@ let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).fil
 console.log(teacherData);
 
 /* get data about the person that is scraping */
- let userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim());
+/* var userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim()); */
+var userData = document.getElementsByClassName('gb_de')[0]; 
 
- studentData.push({
-     name:userData[0],
-     student_id:parseInt(userData[1])
- });
+studentData.push({
+    name: userData.children[1].innerText,
+    student_id: parseInt(userData.children[2].innerText)
+});
 
  const finalData = {
     teachers:teacherData,
