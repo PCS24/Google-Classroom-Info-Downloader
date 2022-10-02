@@ -1,11 +1,11 @@
-//this file contains the code which is fetched by the bookmark and is run
+/* this file contains the code which is fetched by the bookmark and is run */
 let saveAsImport;
 
-//get student data
 let studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.firstChild.firstChild.attributes['aria-label'].value.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
+/* get student data */
 console.log(studentData);
 
-//try to click view more
+/* try to click view more */
 try{
     Array.from(document.getElementsByClassName('NPEfkd RveJvd snByac')).filter((element) => element.innerText == "View all")[0].click();
 }catch(e){
@@ -13,11 +13,11 @@ try{
     console.log(e);
 }
 
-//get teacher data
+/* get teacher data */
 let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}});
 console.log(teacherData);
 
-//get data about the person that is scraping
+/* get data about the person that is scraping */
  let userData = Array.from(document.getElementsByClassName('gb_C gb_Ma gb_h'))[0].attributes['aria-label'].value.replace('Google Account:','').replace('\n','').replace('(','').replace(')','').replace('@edison.k12.nj.us','').split('  ').filter(Boolean).map(a=>a.trim());
 
  studentData.push({
@@ -32,16 +32,16 @@ console.log(teacherData);
 }
 let title = document.title;
 
-//replace the page with questions
+/* replace the page with questions */
 document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
-    //import the file saving library
+    /* import the file saving library */
     saveAsImport = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
   
-    await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
-    //input validation
+    await fetch(/*'https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html'*/'http://localhost:8000/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
+    /* input validation */
     document.getElementById('hrnum').onkeyup = function(){
         let inp = document.getElementById('hrnum');
         let value = document.getElementById('hrnum').value;
@@ -59,26 +59,26 @@ async function main(){
             good();
         }
         function bad(){
-            //console.log(document.getElementById('hrnum').value);
+            /* console.log(document.getElementById('hrnum').value); */
 
             inp.className.includes('error')?undefined:inp.className+= ' error';
             document.getElementById('hrsub').hidden = true;
             
         }
         function good(){
-            //console.log(document.getElementById('hrnum').value);
+            /* console.log(document.getElementById('hrnum').value); */
             inp.className =  inp.className.replace(' error','');
             inp.className =  inp.className.replace(' error','');
             document.getElementById('hrsub').hidden = false;
 
         }
     }
-    //ask is hr question
+    /* ask is hr question */
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
     finalData.is_hr_class = finalData.is_hr_class.toLowerCase()=="yes"?true:false
     if(finalData.is_hr_class){
-        //ask which hr
+        /* ask which hr */
         let hrQuestion = document.getElementById('hr-question');
         hrQuestion.hidden = false;
         let form = document.getElementById('form4');
@@ -95,7 +95,7 @@ async function main(){
 
         return;
     }else{
-        //ask mp question
+        /* ask mp question */
         let mpQuestion = document.getElementById('mp-question');
         mpQuestion.hidden = false;
         let form = document.getElementById('form3');
@@ -114,7 +114,7 @@ async function main(){
         
             }    
         })
-        //ask pd question
+        /* ask pd question */
         let pdQuestion = document.getElementById('pd-question');
         pdQuestion.hidden = false;
         form = document.getElementById('form2');
@@ -138,12 +138,12 @@ async function main(){
 
 }
 main().then(()=>{
-    //convert finalData object into string blob
+    /* convert finalData object into string blob */
     const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
-    //save the blob as a file with page title in file name
+    /* save the blob as a file with page title in file name */
     saveAs(blob,`classdata-${title}.json`)
     setTimeout(function () {
-        //reload page after 1 sec
+        /* reload page after 1 sec */
         window.location.reload()
     }, 1000);
 }).catch(console.error);
