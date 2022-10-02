@@ -15,7 +15,7 @@
     <div class="center">
         <br>
         <br>
-        1. Drag <a id="linkJs" href="javascript:(function() {fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/script.js').then((res)=>res.text()).then(text=>console.log(eval(text)));}());">this link</a> into your bookmarks bar
+        1. Drag <a id="linkJs" href="javascript:alert('Something went wrong when you installed this script.');">this link</a> into your bookmarks bar
         <br>
         <br>
         2. Open one of your classes on Google Classroom
@@ -48,7 +48,7 @@
 
 
 <script>
-    fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/bookmark.js').then((res)=>(res.text().then((a)=>(document.getElementById('linkJs').attributes['href'].value=a))));
+    fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/script.js').then((res)=>(res.text().then((a)=>(document.getElementById('linkJs').attributes['href'].value=a))));
 </script>
 </body>
 </html> 
