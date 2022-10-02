@@ -200,11 +200,7 @@ function setupPrompts() {
     const body = document.body;
 
     /* CSS */
-    tmp = document.createElement('link');
-    tmp.setAttribute('rel', 'stylesheet');
-    tmp.setAttribute('type', 'text/css');
-    tmp.setAttribute('href', CSS_URL);
-    body.appendChild(tmp);
+    fetch(CSS_URL).then((res)=>res.text()).then((res)=>{tmp = createChild(body, 'style'); tmp.innerText = res;});
 
     /* Logo image */
     tmp = document.createElement('img');
