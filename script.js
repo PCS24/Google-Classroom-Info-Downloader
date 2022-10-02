@@ -1,5 +1,6 @@
+javascript:
 /* this file contains the code which is fetched by the bookmark and is run */
-let saveAsImport;
+var saveAsImport;
 
 /* get student data */
 var studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.lastChild.innerText.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
@@ -14,7 +15,7 @@ try{
 }
 
 /* get teacher data */
-let teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}});
+var teacherData = Array.from(document.getElementsByClassName('sCv5Q asQXV')).filter(a=>a.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style[0]!="display").map((a, index)=>{return{name: a.innerText, owner: index==0}});
 console.log(teacherData);
 
 /* get data about the person that is scraping */
@@ -26,12 +27,12 @@ studentData.push({
     student_id: parseInt(userData.children[2].innerText)
 });
 
- const finalData = {
+var finalData = {
     teachers:teacherData,
     students:studentData,
 
-}
-let title = document.title;
+};
+var title = document.title;
 
 /* replace the page with questions */
 document.body.parentElement.removeChild(document.body);
@@ -73,11 +74,11 @@ async function main(){
             document.getElementById('hrsub').hidden = false;
 
         }
-    }
+    };
     /* ask is hr question */
     finalData.is_hr_class = await newyesno('Is this a homeroom class?').catch(console.error);
     console.log(finalData);
-    finalData.is_hr_class = finalData.is_hr_class.toLowerCase()=="yes"?true:false
+    finalData.is_hr_class = finalData.is_hr_class.toLowerCase()=="yes"?true:false;
     if(finalData.is_hr_class){
         /* ask which hr */
         let hrQuestion = document.getElementById('hr-question');
@@ -104,7 +105,7 @@ async function main(){
         
             form.onsubmit = (e)=>{
                 e.preventDefault();
-                let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement)
+                let options = Array.from(form.children).filter(a=>a instanceof HTMLInputElement);
                 let ans = options.find(a=> a.checked);
                 if (ans == undefined) {
                     reject();
@@ -114,7 +115,7 @@ async function main(){
                 mpQuestion.hidden = true;
         
             }    
-        })
+        });
         /* ask pd question */
         let pdQuestion = document.getElementById('pd-question');
         pdQuestion.hidden = false;
@@ -127,10 +128,10 @@ async function main(){
                 resolve(dropmenu.value);
                 mpQuestion.hidden = true;
             }
-        })
+        });
         
-            finalData.start_period = parseInt(finalData.class_period.split('/')[0])
-            finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.split('/').length-1])
+            finalData.start_period = parseInt(finalData.class_period.split('/')[0]);
+            finalData.end_period = parseInt(finalData.class_period.split('/')[finalData.class_period.split('/').length-1]);
             delete finalData.class_period;
         
             
@@ -142,17 +143,17 @@ main().then(()=>{
     /* convert finalData object into string blob */
     const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
     /* save the blob as a file with page title in file name */
-    saveAs(blob,`classdata-${title}.json`)
+    saveAs(blob,`classdata-${title}.json`);
     setTimeout(function () {
         /* reload page after 1 sec */
-        window.location.reload()
+        window.location.reload();
     }, 1000);
 }).catch(console.error);
 
 function newyesno(question){
    return new Promise((resolve, reject) => {
     let div = document.getElementById('yes-no-question');
-    let form = document.getElementById('form1')
+    let form = document.getElementById('form1');
     div.hidden = false;
     document.getElementById('yes-no-title').innerText = question;
     form.onsubmit = (e)=>{
