@@ -1,6 +1,5 @@
 javascript:
 /* this file contains the code which is fetched by the bookmark and is run */
-var saveAsImport;
 
 /* get student data */
 var studentData = Array.from(document.getElementsByClassName('qRU9Ec')).filter(a=>!a.firstChild.innerText.includes('invited')).map(a=>{return{name:a.firstChild.innerText,student_id:parseInt(a.lastChild.firstChild.lastChild.innerText.toString().replace('Email','').replace('@edison.k12.nj.us','').trim())}});
@@ -39,8 +38,6 @@ document.body.parentElement.removeChild(document.body);
 document.body = document.createElement('body');
 document.head.parentElement.removeChild(document.head);
 async function main(){
-    /* import the file saving library */
-    saveAsImport = await fetch('https://raw.githubusercontent.com/eligrey/FileSaver.js/b590aeeb3958a1baebfaa86000938c64a026e721/src/FileSaver.js').then((res)=>res.text()).then(text=>console.log(eval(text)));
   
     await fetch('https://raw.githubusercontent.com/PCS24/Google-Classroom-Info-Downloader/main/prompt.html').then((res)=>(res.text().then((a)=>(document.body.innerHTML=a))));
     /* input validation */
@@ -140,15 +137,31 @@ async function main(){
 
 }
 main().then(()=>{
-    /* convert finalData object into string blob */
-    const blob = new Blob([JSON.stringify(finalData)],{type: "text/plain;charset=utf-8"});
-    /* save the blob as a file with page title in file name */
-    saveAs(blob,`classdata-${title}.json`);
+    save(JSON.stringify(finalData), `classdata-${title}.json`, "text/plain;charset=utf-8");
     setTimeout(function () {
         /* reload page after 1 sec */
         window.location.reload();
     }, 1000);
 }).catch(console.error);
+
+function save(data, filename, type) {
+    /* https://stackoverflow.com/a/30832210 */
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) /* IE10+ */
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { /* Others */
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
 
 function newyesno(question){
    return new Promise((resolve, reject) => {
